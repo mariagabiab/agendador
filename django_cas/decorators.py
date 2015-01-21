@@ -1,7 +1,5 @@
 """Replacement authentication decorators that work around redirection loops"""
 
-from __future__ import unicode_literals
-
 try:
     from functools import wraps
 except ImportError:
@@ -13,7 +11,6 @@ from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.utils.http import urlquote
 
 __all__ = ['login_required', 'permission_required', 'user_passes_test']
-
 
 def user_passes_test(test_func, login_url=None,
                      redirect_field_name=REDIRECT_FIELD_NAME):
