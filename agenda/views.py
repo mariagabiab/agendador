@@ -156,7 +156,14 @@ def espacos(request):
 
 @login_required
 def addreserva(request):
-    usuario = request.user.username
+    
+    #usuario = request.user.username
+    #usuario = request.user.email
+    #usuario = request.session.get('attributes')['email']
+    usuario = request.session.get('attributes')
+    #usuario = request.session['attributes']
+    #usuario = usuario['username']
+
     if request.method == "POST":
         request.POST = request.POST.copy()
         request.POST['estado'] = 1
@@ -165,7 +172,7 @@ def addreserva(request):
         if form.is_valid():
             #NADA AQUI DEU CERTO
             #print form.fields['usuario']
-            #form.fields['estado'] = forms.CharField(widget=forms.TextInput)
+            #form.fields['estado'] = forms.CharField(widget=fomrs.TextInput)
             #form.cleaned_data['ramal'] = 1
             #form.is_valid()
             #form.fields['estado'] = 0

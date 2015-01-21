@@ -167,6 +167,8 @@ class CASBackend(object):
         username, attributes = _verify(ticket, service)
         if attributes:
             request.session['attributes'] = attributes
+            #print "ATRIBUTOOOOOS"
+            #print attributes
         if not username:
             return None
         try:
@@ -174,6 +176,7 @@ class CASBackend(object):
         except User.DoesNotExist:
             # user will have an "unusable" password
             user = User.objects.create_user(username, '')
+            #user.email = attributes['email']
             user.save()
         return user
 
